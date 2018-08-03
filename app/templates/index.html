@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf%}
+
+{% block title %}
+Homepage
+{% endblock %}
+
+{% block app_content%}
+<div id="main" class="row">
+  <div class="col-md-6 offset-md-3">
+    <div>
+      <h3 id="welcome"> Welcome to Amazing Reviews </h3>
+        {{ wtf.quick_form(form)}}
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div id="footer" class="text-center center-block">
+        <a href="https://github.com/guoqi228" target="_blank"><i id="social-git" class="fa fa-github-square fa-3x social"></i></a>
+        <a href="https://www.linkedin.com/in/guoqi228/" target="_blank"><i id="social-link" class="fa fa-linkedin-square fa-3x social"></i></a>
+        <a href="mailto:clayguo228@gmail.com" target="_blank"><i id="social-mail" class="fa fa-envelope-square fa-3x social"></i></a> <br>
+        <p>© 2018 Author: Clay Guo</p>
+  </div>
+</div>
+{% endblock %}

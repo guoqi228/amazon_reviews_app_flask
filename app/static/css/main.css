@@ -1,0 +1,80 @@
+#welcome{
+  text-align: center;
+}
+#main{
+  margin-top: 200px;
+}
+.social:hover {
+     -webkit-transform: scale(1.1);
+     -moz-transform: scale(1.1);
+     -o-transform: scale(1.1);
+ }
+ .social {
+     -webkit-transform: scale(0.8);
+     /* Browser Variations: */
+     -moz-transform: scale(0.8);
+     -o-transform: scale(0.8);
+     -webkit-transition-duration: 0.5s;
+     -moz-transition-duration: 0.5s;
+     -o-transition-duration: 0.5s;
+ }
+
+#social-git{
+  color: #444444;
+}
+#social-link{
+    color: #007BB6;
+}
+#social-mail{
+    color: #c71610;
+}
+#social-git:hover {
+    color: #444444;
+}
+#social-link:hover {
+    color: #007BB6;
+}
+#social-mail:hover {
+    color: #c71610;
+}
+html,body{
+    height: 100%;
+    background: linear-gradient(to right, #ff9900, #e74c3c);
+    overflow-x: hidden;
+}
+#footer {
+  bottom: 40px;
+  height: 40px;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+#submit{
+  margin-top: 24px;
+  margin-right: 90px;
+  display: inline-block;
+  float: right;
+}
+#productId{
+  width: 100%;
+}
+.form-group{
+  width: 80%;
+  display: inline-block;
+  float: left;
+}
+table.dataframe, .dataframe th, .dataframe td {
+  margin-top: 50px;
+  border: none;
+  border-bottom: 1px solid black;
+  border-collapse: collapse;
+  text-align:left;
+  padding: 10px;
+  margin-bottom: 40px;
+  font-size: 1em;
+}
+#my_df{
+  margin-top: 20px;
+  padding-top: 20px;
+  overflow-x: scroll;
+}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+Reviews
+{% endblock %}
+  {% block app_content %}
+    <div id='my_df'>
+      <div class="row">
+        <div class="col-md-10 offset-md-1">
+          <h3> Scraped Reivews </h3>
+          <div>
+            {{ reviews_df | safe }}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
