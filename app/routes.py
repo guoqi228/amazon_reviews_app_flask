@@ -11,16 +11,11 @@ import time
 def index():
     form = SubmitProductIdForm()
     if form.validate_on_submit():
-        if len(form.productId.data) != 10:
-            flash('Invalid ASIN number!')
-            time.sleep(2)
-            flash(' Redirecting...')
-            return redirect(url_for('index'))
         reviews_df = scrape_reviews(form.productId.data)
+        if reviews_df.shape[0] == 0:
+            flash('* Something went wrong, please check your ASIN number!')
+            time.sleep(3)
+            return redirect(url_for('index'))
         reviews_df_html = reviews_df.to_html()
         return render_template('showoverview.html', reviews_df_html= reviews_df_html)
     return render_template('index.html', form = form)
-
-@app.route('/modal', methods = ['GET', 'POST'])
-def modal():
-    return render_template('modal.html')

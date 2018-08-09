@@ -81,3 +81,10 @@ table.dataframe, .dataframe th, .dataframe td {
   float: left;
   text-align: left;
 }
+#loading{
+  display:block;
+  padding-left: auto;
+  padding-right: auto;
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -5,6 +5,12 @@
 Homepage
 {% endblock %}
 
+{% block scripts %}
+  {{ super() }}
+{% endblock %}
+
+
+
 {% block app_content%}
 <div id="main" class="row">
   <div class="col-md-6 offset-md-3">
@@ -13,29 +19,28 @@ Homepage
         <div>
           {{ wtf.quick_form(form)}}
         </div>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+            <h5><span class="message badge badge-danger">{{ message }}</span></h5>
+            {% endfor %}
+          {% endif %}
+      {% endwith %}
     </div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Status</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Please wait while loading...</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            {% for message in messages %}
-              <p class="message"> {{ message }} </p>
-            {% endfor %}
-          {% endif %}
-      {% endwith %}
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Continue</button>
+        <div id="content">
+          <img id="loading" src="../static/img/ajax-loader.gif" alt="loading" />
+        </div>
       </div>
     </div>
   </div>
