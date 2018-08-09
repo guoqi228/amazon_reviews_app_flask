@@ -3,6 +3,8 @@ import requests
 import numpy as np
 import pandas as pd
 import os
+from flask import Markup, flash
+
 
 def scrape_reviews(asin):
     ratings_dict = {}
@@ -31,8 +33,12 @@ def scrape_reviews(asin):
     totalreviews = int(totalreviews[0].replace(",",""))
     maxpage = int(pages[-1].replace(",",""))
     totalpages = maxpage
+
     while True:
-        print('Scraping review page nr. {}'.format(p_num))
+        # print('Scraping reviews on page {} out of total {} pages...'.format(p_num, totalpages))
+        # progress_msg = 'Scraping reviews on page {} out of total {} pages...'.format(p_num, totalpages)
+        #message = Markup("<h5> {{progress_msg}} </h5>")
+        # flash(progress_msg)
         amazon_url = 'https://www.amazon.com/product-reviews/' + asin + '/ref=cm_cr_arp_d_paging_btm_' +str(p_num) + '?pageNumber=' + str(p_num) + '&sortBy=recent'
         # Add some recent user agent to prevent amazon from blocking the request
         # Find some chrome user agent strings  here https://udger.com/resources/ua-list/browser-detail?browser=Chrome
@@ -78,4 +84,4 @@ def scrape_reviews(asin):
     reviews_df.loc[reviews_df['review_rating'] == 0, 'review_rating'] = 5
     reviews_df['review_length'] = reviews_df['review_text'].apply(lambda x: len(x))
     reviews_df.drop_duplicates(inplace=True)
-    return reviews_df.to_html()
+    return reviews_df

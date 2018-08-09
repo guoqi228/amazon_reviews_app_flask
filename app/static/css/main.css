@@ -50,9 +50,8 @@ html,body{
   right: 0;
 }
 #submit{
-  margin-top: 24px;
+  margin-top: 25px;
   margin-right: 90px;
-  display: inline-block;
   float: right;
 }
 #productId{
@@ -77,4 +76,8 @@ table.dataframe, .dataframe th, .dataframe td {
   margin-top: 20px;
   padding-top: 20px;
   overflow-x: scroll;
+}
+.message{
+  float: left;
+  text-align: left;
 }
