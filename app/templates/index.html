@@ -9,44 +9,75 @@ Homepage
   {{ super() }}
 {% endblock %}
 
-
-
 {% block app_content%}
 <div id="main" class="row">
   <div class="col-md-6 offset-md-3">
-    <div>
-      <h3 id="welcome"> Welcome to Amazing Reviews </h3>
-        <div>
-          {{ wtf.quick_form(form)}}
+    <h3 id="welcome"> Welcome to Amazing Reviews </h3>
+      <form class="form-inline" action method="post" role="form">
+        {{ form.csrf_token }}
+        {{ form.productId(class_="form-control") }}
+        {{ form.submit(class_="btn btn-primary") }}
+        <div id="help-link">
+          <a href="#" data-toggle="modal" data-target="#help-page"> Can't find ASIN number?</a> <br>
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              {% for message in messages %}
+                <h6><span class="message badge badge-danger">{{ message }}</span></h6>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
         </div>
-        {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            {% for message in messages %}
-            <h5><span class="message badge badge-danger">{{ message }}</span></h5>
-            {% endfor %}
-          {% endif %}
-      {% endwith %}
-    </div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Please wait while loading...</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div id="content">
-          <img id="loading" src="../static/img/ajax-loader.gif" alt="loading" />
+      </form>
+      <!-- {{ wtf.quick_form(form) }} -->
+
+<!--Loading Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Please wait while loading...</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="content">
+                <img id="loading" src="../static/img/ajax-loader.gif" alt="loading" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <!--End Loading Modal -->
+      <!-- Help page Modal -->
+      <div class="modal fade" id="help-page" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">How to find ASIN number?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>1. The easiest way to get the ASIN is to look at the URL. Select and Copy the ASIN number as shown in the picture below.</p>
+              <img src="../static/img/amazon-asin.png" alt="img" width="100%">
+              <br> <br>
+              <p>2. You can also find the ASIN by scrolling down to the Product Details section of the page.</p>
+              <img src="../static/img/amazon-asin-2.png" alt="img" width="100%">
+              <br> <br>
+              <p>3. For more information about Amazon ASIN number, <a target="_blank" href="https://blog.datafeedwatch.com/amazon-asin-number-what-is-it-and-how-do-you-get-it">click here!</a> </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+<!--End of Modal-->
     </div>
   </div>
-</div>
-  </div>
-</div>
+<!-- footer -->
 <div class="container-fluid">
   <div id="footer" class="text-center center-block">
         <a href="https://github.com/guoqi228" target="_blank"><i id="social-git" class="fa fa-github-square fa-3x social"></i></a>

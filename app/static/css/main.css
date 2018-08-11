@@ -49,19 +49,6 @@ html,body{
   position: absolute;
   right: 0;
 }
-#submit{
-  margin-top: 25px;
-  margin-right: 90px;
-  float: right;
-}
-#productId{
-  width: 100%;
-}
-.form-group{
-  width: 80%;
-  display: inline-block;
-  float: left;
-}
 table.dataframe, .dataframe th, .dataframe td {
   margin-top: 50px;
   border: none;
@@ -74,7 +61,6 @@ table.dataframe, .dataframe th, .dataframe td {
 }
 #my_df{
   margin-top: 20px;
-  padding-top: 20px;
   overflow-x: scroll;
 }
 .message{
@@ -87,4 +73,29 @@ table.dataframe, .dataframe th, .dataframe td {
   padding-right: auto;
   margin-left: auto;
   margin-right: auto;
+}
+#submit{
+  display:inline;
+  padding-left: auto;
+  padding-right: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+form.form-inline{
+  display: block;
+  padding-bottom:0px;
+  margin-top:30px;
+  margin-bottom:20px;
+}
+#productId{
+  width: 80%;
+}
+#help-link{
+  padding-top: 5px;
+}
+.overview-sub{
+  padding: 50px;
+}
+.unbold{
+  font-weight:normal;
 }

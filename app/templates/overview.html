@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+  Overview
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+{% endblock %}
+
+{% block app_content %}
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <div class="row">
+        <div class="col-md">
+          <div class="overview-sub">
+            <h3> Product Name: </h3>
+            <h4> Total number of reviews: </h4>
+            <h4> Adjusted Rating:</h4>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="overview-sub">
+            <h3>Ratings:</h3>
+            <img src="https://placeimg.com/640/480/arch/grayscale" alt="img" width="50%">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div id='my_df'>
+      <div class="row">
+        <div class="col-md-10 offset-md-1">
+          <h3> Scraped Reivews </h3><h5><a id="downloadtbn" class="badge badge-primary" href="{{url_for('static_file', path=path)}}">Download <span class="unbold">({{filename}})</span> </a></h5> <h5> <span class="badge badge-success unbold">Only showing 50 most recent reviews, you can download all reviews by clicking the download button.</span> </h5>
+          <div class="reviews">
+             {{ reviews_df_html | safe }}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
