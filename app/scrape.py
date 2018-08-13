@@ -5,6 +5,26 @@ import pandas as pd
 import os
 from flask import flash
 
+def get_product_info(asin):
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.62 Safari/537.36'}
+    XPATH_TOTAL_REVIEWS = './/span[@data-hook="total-review-count"]//text()'
+    XPATH_PRODUCT_NAME = './/a[@data-hook="product-link"]//text()'
+    XPATH_PRODUCT_RATING = './/span[@data-hook="rating-out-of-text"]//text()'
+    amazon_url = 'https://www.amazon.com/product-reviews/' + asin + '/ref=cm_cr_arp_d_paging_btm_1?pageNumber=1&sortBy=recent'
+            # Add some recent user agent to prevent amazon from blocking the request
+            # Find some chrome user agent strings  here https://udger.com/resources/ua-list/browser-detail?browser=Chrome
+    page = requests.get(amazon_url, headers=headers)
+    page_response = page.text.encode('utf-8')
+    parser = html.fromstring(page_response)
+    totalreviews = parser.xpath(XPATH_TOTAL_REVIEWS)
+    product_name = parser.xpath(XPATH_PRODUCT_NAME)
+    product_name = product_name[0]
+    product_rating = parser.xpath(XPATH_PRODUCT_RATING)
+    product_rating = product_rating[0].split()[0]
+    totalreviews = int(totalreviews[0].replace(',',''))
+    product_info = [product_name, totalreviews, product_rating]
+    return product_info
 
 def scrape_reviews(asin):
     try:

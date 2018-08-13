@@ -94,8 +94,24 @@ form.form-inline{
   padding-top: 5px;
 }
 .overview-sub{
-  padding: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .unbold{
   font-weight:normal;
+}
+.figure-title{
+  text-align: center;
+}
+.page-title{
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.sentiments{
+  margin-left: 10px;
+}
+.add_margin{
+  margin-top: 35px;
+  margin-bottom: 35px;
 }
