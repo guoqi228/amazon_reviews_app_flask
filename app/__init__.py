@@ -7,6 +7,5 @@ from config import Config
 app = Flask(__name__)
 boostrap = Bootstrap(app)
 app.config.from_object(Config)
-
 # routes must be set after app variable is set
 from app import routes
