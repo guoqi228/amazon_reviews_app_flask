@@ -12,8 +12,6 @@ def get_product_info(asin):
     XPATH_PRODUCT_NAME = './/a[@data-hook="product-link"]//text()'
     XPATH_PRODUCT_RATING = './/span[@data-hook="rating-out-of-text"]//text()'
     amazon_url = 'https://www.amazon.com/product-reviews/' + asin + '/ref=cm_cr_arp_d_paging_btm_1?pageNumber=1&sortBy=recent'
-            # Add some recent user agent to prevent amazon from blocking the request
-            # Find some chrome user agent strings  here https://udger.com/resources/ua-list/browser-detail?browser=Chrome
     page = requests.get(amazon_url, headers=headers)
     page_response = page.text.encode('utf-8')
     parser = html.fromstring(page_response)
@@ -31,7 +29,6 @@ def scrape_reviews(asin):
         ratings_dict = {}
         reviews_list = []
         reviews_df = pd.DataFrame()
-
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.62 Safari/537.36'}
         XPATH_REVIEWS = '//div[@data-hook="review"]'
@@ -44,7 +41,6 @@ def scrape_reviews(asin):
         XPATH_REVIEW_PAGENUM = './/li[@class="page-button"]//text()'
         XPATH_TOTAL_REVIEWS = './/span[@data-hook="total-review-count"]//text()'
         amazon_page1 = 'https://www.amazon.com/product-reviews/' + asin + '/ref=cm_cr_arp_d_paging_btm_1?pageNumber=1&sortBy=recent'
-
         p_num = 1
         page = requests.get(amazon_page1, headers=headers)
         page_response = page.text.encode('utf-8')
@@ -54,23 +50,14 @@ def scrape_reviews(asin):
         totalreviews = int(totalreviews[0].replace(",",""))
         maxpage = int(pages[-1].replace(",",""))
         totalpages = maxpage
-
         while True:
-            # print('Scraping reviews on page {} out of total {} pages...'.format(p_num, totalpages))
-            # progress_msg = 'Scraping reviews on page {} out of total {} pages...'.format(p_num, totalpages)
-            #message = Markup("<h5> {{progress_msg}} </h5>")
-            # flash(progress_msg)
             amazon_url = 'https://www.amazon.com/product-reviews/' + asin + '/ref=cm_cr_arp_d_paging_btm_' +str(p_num) + '?pageNumber=' + str(p_num) + '&sortBy=recent'
-            # Add some recent user agent to prevent amazon from blocking the request
-            # Find some chrome user agent strings  here https://udger.com/resources/ua-list/browser-detail?browser=Chrome
             page = requests.get(amazon_url, headers=headers)
             page_response = page.text.encode('utf-8')
             parser = html.fromstring(page_response)
             reviews = parser.xpath(XPATH_REVIEWS)
-
             if not len(reviews) > 0:
                 break
-            # Parsing individual reviews
             for review in reviews:
                 raw_review_author = review.xpath(XPATH_REVIEW_AUTHOR)
                 raw_review_rating = review.xpath(XPATH_REVIEW_RATING)
@@ -78,7 +65,6 @@ def scrape_reviews(asin):
                 raw_review_date = review.xpath(XPATH_REVIEW_DATE)
                 raw_review_body = review.xpath(XPATH_REVIEW_BODY)
                 raw_review_helpful = review.xpath(XPATH_REVIEW_HELPFUL)
-
                 review_dict = {
                     'review_text': raw_review_body,
                     'review_posted_date': raw_review_date,

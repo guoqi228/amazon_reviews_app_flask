@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+  AdaBoost Prediction
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script type="text/javascript" src="http://kozea.github.com/pygal.js/javascripts/svg.jquery.js"></script>
+   <script type="text/javascript" src="http://kozea.github.com/pygal.js/javascripts/pygal-tooltips.js"></script>
+{% endblock %}
+
+{% block app_content %}
+<div class="row add_margin">
+  <div class="col-md-10 offset-md-1">
+    <div class="row">
+      <div class="col-md">
+        <div class="row justify-content-md-center">
+          <h4>AdaBoost Decision Tree Regreesion Prediction</h4>
+        </div>
+        <div class="col-md">
+          <div class="row add_less_margin">
+            <div class="container" align="center">
+              <embed type="image/svg+xml" src={{adaplot|safe}} style='max-width:1000px'/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- footer -->
+<div class="container-fluid">
+  <div id="footer" class="text-center center-block">
+        <a href="https://github.com/guoqi228" target="_blank"><i id="social-git" class="fa fa-github-square fa-3x social"></i></a>
+        <a href="https://www.linkedin.com/in/guoqi228/" target="_blank"><i id="social-link" class="fa fa-linkedin-square fa-3x social"></i></a>
+        <a href="mailto:clayguo228@gmail.com" target="_blank"><i id="social-mail" class="fa fa-envelope-square fa-3x social"></i></a> <br>
+        <p>© 2018 Author: Clay Guo</p>
+  </div>
+</div>
+
+{% endblock %}

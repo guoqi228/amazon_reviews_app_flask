@@ -4,3 +4,7 @@ function checkEmpty() {
     $("#submit").attr("data-toggle","modal");
   }
 }
+
+$(document).ready(function() {
+    $(".dropdown-toggle").dropdown();
+});

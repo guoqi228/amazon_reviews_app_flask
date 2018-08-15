@@ -110,20 +110,18 @@
         <div class="col-md">
           <div class="row">
             <div class="col-md">
-              <h3 class="add_margin">Monthly Sales</h3>
+              <h3 class="add_margin">Monthly Sales <a target="_blank" href="{{url_for('prediction', data=filename)}}" class="badge badge-primary unbold">Make A Prediction</a> </h3>
             </div>
           </div>
 
           <div class="row justify-content-md-center">
             <div class="col-md-10">
               <div class="container" align="center">
-                <embed id="sales-plot" type="image/svg+xml" src={{sales_plot|safe}} style='max-width:800px'/>
+                <embed id="sales-plot" type="image/svg+xml" src={{sales_plot|safe}} style='max-width:1200px'/>
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
 
         <div class="row">
@@ -139,5 +137,13 @@
       </div>
     </div>
   </div>
-
+  <!-- footer -->
+  <div class="container-fluid">
+    <div id="footer" class="text-center center-block">
+          <a href="https://github.com/guoqi228" target="_blank"><i id="social-git" class="fa fa-github-square fa-3x social"></i></a>
+          <a href="https://www.linkedin.com/in/guoqi228/" target="_blank"><i id="social-link" class="fa fa-linkedin-square fa-3x social"></i></a>
+          <a href="mailto:clayguo228@gmail.com" target="_blank"><i id="social-mail" class="fa fa-envelope-square fa-3x social"></i></a> <br>
+          <p>© 2018 Author: Clay Guo</p>
+    </div>
+  </div>
   {% endblock %}

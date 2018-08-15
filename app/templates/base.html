@@ -28,23 +28,52 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Web Scraping<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Model</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Prediction</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Resources</a>
-      </li>
+      <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Machine Learning
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" target="_blank" href="https://github.com/guoqi228/linear_regression_matlab">Linear Regression</a>
+                <a class="dropdown-item" target="_blank" href="https://github.com/guoqi228/logistic_regression_matlab">Logistic Regression</a>
+                <a class="dropdown-item" target="_blank" href="https://github.com/guoqi228/bias_and_variance_matlab">Bias and Variance</a>
+                <a class="dropdown-item" target="_blank" href="https://github.com/guoqi228/neural_network_ii_matlab">Neural Network</a>
+                <a class="dropdown-item" target="_blank" href="https://github.com/guoqi228/support_vector_machines_and_spam_classifier_matlab">Support Vector Machine</a>
+                <a class="dropdown-item" target="_blank" href="https://github.com/guoqi228/k_means_clustering_and_pca_matlab">K-Means and PCA</a>
+                <a class="dropdown-item" target="_blank" href="https://github.com/guoqi228/anomaly_detection_and_recommender_system_matlab">Recommender System</a>
+              </div>
+            </li>
+        <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Projects
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" target="_blank" href="https://github.com/guoqi228/model_credit_risk_in_loans/blob/master/model_credit_risk_in_loans_project.ipynb">Model Credit Risk In Loans</a>
+                  <a class="dropdown-item" target="_blank" href="https://github.com/guoqi228/movie_reviews_sentiment_analysis_naive_bayes/blob/master/movie_reviews_sentiment_analysis_naive_bayes.ipynb">Moive Reviews Sentiment Analysis</a>
+                  <a class="dropdown-item" target="_blank" href="https://github.com/guoqi228/individual_income_prediction_random_forest/blob/master/individual_income_prediction_random_forest.ipynb">Individual Income Prediction</a>
+                  <a class="dropdown-item" target="_blank" href="https://github.com/guoqi228/nba_player_clustering_kmeans/blob/master/nba_player_clustering_kmeans.ipynb">NBA Player Clustering</a>
+                  <a class="dropdown-item" target="_blank" href="https://github.com/guoqi228/college_admission_prediction_logistic_regression/blob/master/college_addmission_prediction_logistic_regression.ipynb">Collage Admission Prediction</a>
+                  <a class="dropdown-item" target="_blank" href="https://github.com/guoqi228/house_sale_price_prediction_linear_regression/blob/master/house_sale_price_prediction_linear_regression.ipynb">House Sale Price Prediction</a>
+                </div>
+              </li>
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Resources
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" target="_blank" href="https://www.coursera.org/learn/machine-learning">Machine Learning Course - Stanford University</a>
+            <a class="dropdown-item" target="_blank" href="https://bigdataanalytics.mit.edu/">Data Science Course - MIT</a>
+            <a class="dropdown-item" target="_blank" href="https://www.edx.org/professional-certificate/berkeleyx-foundations-of-data-science">Foundation of Data Science - UC Berkeley</a>
+            <a class="dropdown-item" target="_blank" href="https://www.dataquest.io/home">Data Science Online Learning - Dataquest</a>
+            <a class="dropdown-item" target="_blank" href="https://codingtemple.com/">Data Science - Coding Temple</a>
+            <a class="dropdown-item" target="_blank" href="https://www.udacity.com/course/data-scientist-nanodegree--nd025">Data Science Nanodegree - Udacity</a>
+          </div>
+        </li>
     </ul>
   </div>
 </nav>
 {% endblock %}
 
 {% block content %}
-  {% block app_content %}  {% endblock %}
+  {% block app_content %}
+  {% endblock %}
 {% endblock %}

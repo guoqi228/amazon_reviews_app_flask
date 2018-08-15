@@ -23,10 +23,7 @@ def make_word_cloud(df, ngram_min, ngram_max, name):
         data = row['review_text']
         num_words = 200
         ngram_range = (ngram_min, ngram_max)
-
-        count_vectorizer = CountVectorizer(lowercase=True,
-                                           stop_words=stop_words,
-                                           ngram_range=ngram_range)
+        count_vectorizer = CountVectorizer(lowercase=True,stop_words=stop_words,ngram_range=ngram_range)
         counts = count_vectorizer.fit_transform(data)
         counts = counts.toarray().sum(axis=0)
         count_weighting = dict(zip(count_vectorizer.get_feature_names(), counts))

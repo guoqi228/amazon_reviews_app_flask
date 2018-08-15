@@ -41,12 +41,13 @@ html,body{
     height: 100%;
     background: linear-gradient(to right, #ff9900, #e74c3c);
     overflow-x: hidden;
+    overflow-y: auto;
 }
 #footer {
-  bottom: 40px;
-  height: 40px;
+  bottom: 30px;
+  height: 30px;
   left: 0;
-  position: absolute;
+  position: relative;
   right: 0;
 }
 table.dataframe, .dataframe th, .dataframe td {
@@ -114,4 +115,7 @@ form.form-inline{
 .add_margin{
   margin-top: 35px;
   margin-bottom: 35px;
+}
+.add_less_margin{
+  margin-top: 20px;
 }

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf%}
+{% block title %}
+  Prediction
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script type="text/javascript" src="http://kozea.github.com/pygal.js/javascripts/svg.jquery.js"></script>
+   <script type="text/javascript" src="http://kozea.github.com/pygal.js/javascripts/pygal-tooltips.js"></script>
+{% endblock %}
+
+{% block app_content %}
+
+<div class="row add_margin">
+  <div class="col-md-10 offset-md-1">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md">
+        <h3> Make A Prediction</h3>
+        <p>(You can choose between two models)</p>
+        {% if adaform.errors %}
+          <h6><span class="message badge badge-danger">WARNING: Someting went wrong, please check your input!</span></h6>
+        {% endif %}
+      </div>
+    </div>
+    <div class="row add_margin">
+      <div class="col-md">
+        <div class="row justify-content-md-start">
+          <div class="col-md-8">
+            <h4>Ridge Regression</h4>
+            <br>
+              <div class="ridge-form">
+                {{wtf.quick_form(ridgeform)}}
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md">
+        <div class="row justify-content-md-start">
+          <div class="col-md-8">
+            <h4>AdaBoost Decision Tree Regression</h4>
+            <br>
+              <div class="ada-form">
+                {{ wtf.quick_form(adaform)}}
+              </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- footer -->
+<div>
+  <br><br><br>
+</div>
+<div class="container-fluid">
+  <div id="footer" class="text-center center-block">
+        <a href="https://github.com/guoqi228" target="_blank"><i id="social-git" class="fa fa-github-square fa-3x social"></i></a>
+        <a href="https://www.linkedin.com/in/guoqi228/" target="_blank"><i id="social-link" class="fa fa-linkedin-square fa-3x social"></i></a>
+        <a href="mailto:clayguo228@gmail.com" target="_blank"><i id="social-mail" class="fa fa-envelope-square fa-3x social"></i></a> <br>
+        <p>© 2018 Author: Clay Guo</p>
+  </div>
+</div>
+
+{% endblock %}

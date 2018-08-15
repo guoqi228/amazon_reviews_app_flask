@@ -3,6 +3,7 @@ import pandas as pd
 import pygal
 from pygal.style import DarkSolarizedStyle
 from pygal import Config
+import datetime
 
 def plot_review_length_hist(reviews_df):
     try:
@@ -45,16 +46,17 @@ def plot_monthly_sales(reviews_df):
     try:
         reviews_df['year'] = reviews_df['review_posted_date'].apply(lambda reviews_df:reviews_df.year)
         reviews_df['month'] = reviews_df['review_posted_date'].apply(lambda reviews_df:reviews_df.month)
-        # reviews_df.set_index(reviews_df['index_date_time'],inplace=True)
         monthly_reviews = reviews_df.groupby(['year', 'month']).count().reset_index()
         monthly_reviews['day'] = monthly_reviews['month'].apply(lambda monthly_reviews:1)
         monthly_reviews_counts = monthly_reviews[['year','month', 'day', 'review_posted_date']].rename(columns={'review_posted_date': 'counts'})
         monthly_reviews_counts['date'] = pd.to_datetime(monthly_reviews_counts[['year','month','day']])
-        monthly_review_series = pygal.Line(height=350, x_label_rotation=20, show_legend=False,dynamic_print_values=True, style=DarkSolarizedStyle(
+        monthly_review_series = pygal.Line(height=350, x_label_rotation=20,show_minor_x_labels=False, show_legend=False,dynamic_print_values=True, style=DarkSolarizedStyle(
                           value_font_family='googlefont:Raleway',
                           value_font_size=30,
                           value_colors=('white',)))
-        monthly_review_series.x_labels = map(lambda d: d.strftime('%Y-%m-%d'), monthly_reviews_counts['date'].tolist())
+        date_list = list(map(lambda d: d.strftime('%Y-%m-%d'), monthly_reviews_counts['date'].tolist()))
+        monthly_review_series.x_labels = date_list
+        monthly_review_series.x_labels_major = date_list[::3]
         monthly_review_series.title = 'Estimated Monthly Sales Based on Number of Reviews'
         monthly_review_series.add("Sales", monthly_reviews_counts['counts'].tolist())
         monthly_review_series = monthly_review_series.render_data_uri()
