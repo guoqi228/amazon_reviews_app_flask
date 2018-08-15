@@ -1,0 +1,7 @@
+stopwords
+brown
+punkt
+wordnet
+averaged_perceptron_tagger
+conll2000
+movie_reviews
