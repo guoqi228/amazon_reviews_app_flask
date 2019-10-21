@@ -25,7 +25,7 @@ lxml==4.2.3
 Mako==1.0.7
 MarkupSafe==1.0
 matplotlib==2.2.2
-nltk==3.3
+nltk==3.4.5
 numpy==1.15.0
 pandas==0.23.3
 Pillow==5.2.0
