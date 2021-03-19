@@ -19,7 +19,7 @@ get==1.0.3
 gunicorn==19.9.0
 idna==2.7
 itsdangerous==0.24
-Jinja2==2.10
+Jinja2==2.11.3
 kiwisolver==1.0.1
 lxml==4.2.3
 Mako==1.0.7
