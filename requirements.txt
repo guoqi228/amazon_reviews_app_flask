@@ -28,7 +28,7 @@ matplotlib==2.2.2
 nltk==3.3
 numpy==1.15.0
 pandas==0.23.3
-Pillow==5.2.0
+Pillow==8.2.0
 post==1.0.2
 public==1.0.3
 pygal==2.4.0
