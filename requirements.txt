@@ -32,7 +32,7 @@ Pillow==5.2.0
 post==1.0.2
 public==1.0.3
 pygal==2.4.0
-PyJWT==1.6.4
+PyJWT==2.4.0
 pyparsing==2.2.0
 python-dateutil==2.7.3
 python-editor==1.0.3
